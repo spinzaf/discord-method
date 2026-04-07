@@ -1,4 +1,4 @@
-# SCRIPT GET HYPERSQUAD BADGE
+# SCRIPT GET HYPESQUAD BADGE
 ![Preview](https://support.discord.com/hc/article_attachments/360009331331)
 
 ## HIW
