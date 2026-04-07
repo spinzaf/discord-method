@@ -8,6 +8,7 @@ It functions by scanning for HTTPUtils to hijack the app's private API handler, 
 
 ---
 
+## ADD
 ```
 let wreq = webpackChunkdiscord_app.push([[Symbol()],{},r=>r]);
 webpackChunkdiscord_app.pop();
@@ -26,16 +27,43 @@ const api = Object.values(findChunkByCode("HTTPUtils")).find(e=>e?.get)
 api.post({url: "/hypesquad/online",body:{house_id: 1}})
 
 ```
----
-
-### Tutorial
-https://www.youtube.com/watch?v=dB4wCL3HGHM
 
 ### House Selection: The house_id determines the badge:
 - [1] House of Bravery (Purple).
 - [2] House of Brilliance (Orange).
 - [3] House of Balance (Green).
 
+
 example: `api.post({url: "/hypesquad/online",body:{house_id: 2}})` (2, for get orange)
+
+---
+
+## REMOVE
+just change `api.post({url: "/hypesquad/online",body:{house_id: 1}})` to `api.del({url: "/hypesquad/online"})`
+
+full example 
+```
+let wreq = webpackChunkdiscord_app.push([[Symbol()],{},r=>r]);
+webpackChunkdiscord_app.pop();
+const chunks = Object.entries(wreq.m)
+const findChunkByCode = (...codes) => {
+    for (let i = 0; i < chunks.length; i++) {
+        const [id,func] = chunks[i]
+        const chunkCode = func.toString()
+
+        if (codes.every(code=>chunkCode.includes(code))) return wreq(id)
+    }
+}
+
+const api = Object.values(findChunkByCode("HTTPUtils")).find(e=>e?.get)
+
+api.del({url: "/hypesquad/online"})
+```
+
+---
+
+### Tutorial
+PC: https://www.youtube.com/watch?v=dB4wCL3HGHM
+Mobile: Use a browser that supports the developer console, such as Kiwi or Lemur Browser
 
 ### Warning: Running scripts in the console can violate Discord's Terms of Service and poses a security risk if the code is from an untrusted source.
